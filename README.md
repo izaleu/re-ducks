@@ -6,7 +6,7 @@ So I want to propose an extended approach that works great when you go beyond a 
 To recap, a duck:
 * ~~MUST `export default` a function called `reducer()`~~
 * MUST `export` its action creators as functions
-* ~~MUST have action types in the form `npm-module-or-app/reducer/ACTION_TYPE`~~ Should ideally namespace its action types in the form `duckName/ACTION_TYPE`
+* ~~MUST have action types in the form `npm-module-or-app/reducer/ACTION_TYPE`~~ Should ideally namespace its action types in the form `duckName/ACTION_TYPE` or `appName/duckName/ACTION_TYPE` for a published library
 * Should export its action types as `UPPER_SNAKE_CASE`, especially if an external reducer needs to listen for them, or if it is a published reusable library
 
 ## Enter re-ducks
