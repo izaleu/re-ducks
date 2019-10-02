@@ -4,10 +4,10 @@ Before starting, read more about the original [ducks modular approach proposal](
 So I want to propose an extended approach that works great when you go beyond a todo-app.
 
 To recap, a duck:
-* MUST `export default` a function called `reducer()`
+* ~~MUST `export default` a function called `reducer()`~~
 * MUST `export` its action creators as functions
-* MUST have action types in the form `npm-module-or-app/reducer/ACTION_TYPE`
-* MAY export its action types as `UPPER_SNAKE_CASE`, if an external reducer needs to listen for them, or if it is a published reusable library
+* ~~MUST have action types in the form `npm-module-or-app/reducer/ACTION_TYPE`~~ Should ideally namespace its action types in the form `duckName/ACTION_TYPE`
+* Should export its action types as `UPPER_SNAKE_CASE`, especially if an external reducer needs to listen for them, or if it is a published reusable library
 
 ## Enter re-ducks
 Instead of duck files, we use duck folders.
@@ -33,7 +33,7 @@ NOTE: Each concept from your app will have a similar folder.
 
 ## General rules for a duck folder
 A duck folder:
-* MUST contain the **entire logic** for handling **only ONE** concept in your app, ex: product, cart, session, etc.
+* MUST contain the **entire logic** for handling **only ONE** concept in your app, ex: product, cart, session, etc. **Logic shared between multiple ducks should live in a separate shared duck**
 * MUST have an `index.js` file that exports according to the original duck rules.
 * MUST keep code with similar purpose in the same file, ex: reducers, selectors, actions, etc.
 * MUST contain the **tests** related to the duck.
@@ -163,7 +163,7 @@ NOTE: Selector functions will be used outside the duck folder, so they are part 
 
 ### Index
 This file, from a module perspective, behaves as the duck file from the original proposal.
-* It exports, as default, the reducer function of the duck.
+* ~~It exports, as default, the reducer function of the duck.~~ 
 * It exports, as named export, the selectors and the operations.
 * Optionally, it exports the types if they are needed in other ducks.
 ```javascript
